@@ -1,0 +1,90 @@
+version: "3.9"
+
+networks:
+  lumagate_net:
+    driver: bridge
+
+services:
+  lumagate-gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: lumagate-gateway
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    networks:
+      - lumagate_net
+
+  serviceA_v1:
+    build:
+      context: ./services/v1/serviceA
+      dockerfile: Dockerfile
+    container_name: serviceA_v1
+    restart: unless-stopped
+    networks:
+      - lumagate_net
+
+  serviceB_v1:
+    build:
+      context: ./services/v1/serviceB
+      dockerfile: Dockerfile
+    container_name: serviceB_v1
+    restart: unless-stopped
+    networks:
+      - lumagate_net
+
+  serviceC_v1:
+    build:
+      context: ./services/v1/serviceC
+      dockerfile: Dockerfile
+    container_name: serviceC_v1
+    restart: unless-stopped
+    networks:
+      - lumagate_net
+
+  serviceA_v2:
+    build:
+      context: ./services/v2/serviceA
+      dockerfile: Dockerfile
+    container_name: serviceA_v2
+    restart: unless-stopped
+    networks:
+      - lumagate_net
+
+  serviceB_v2:
+    build:
+      context: ./services/v2/serviceB
+      dockerfile: Dockerfile
+    container_name: serviceB_v2
+    restart: unless-stopped
+    networks:
+      - lumagate_net
+
+  serviceC_v2:
+    build:
+      context: ./services/v2/serviceC
+      dockerfile: Dockerfile
+    container_name: serviceC_v2
+    restart: unless-stopped
+    networks:
+      - lumagate_net
+
+  lumagate-dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    container_name: lumagate-dashboard
+    ports:
+      - "80:80"
+    depends_on:
+      - lumagate-gateway
+      - serviceA_v1
+      - serviceB_v1
+      - serviceC_v1
+      - serviceA_v2
+      - serviceB_v2
+      - serviceC_v2
+    restart: unless-stopped
+    networks:
+      - lumagate_net
