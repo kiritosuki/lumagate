@@ -1,5 +1,3 @@
-version: "3.9"
-
 networks:
   lumagate_net:
     driver: bridge
@@ -16,56 +14,56 @@ services:
     networks:
       - lumagate_net
 
-  serviceA_v1:
+  servicea_v1:
     build:
       context: ./services/v1/serviceA
       dockerfile: Dockerfile
-    container_name: serviceA_v1
+    container_name: servicea_v1
     restart: unless-stopped
     networks:
       - lumagate_net
 
-  serviceB_v1:
+  serviceb_v1:
     build:
       context: ./services/v1/serviceB
       dockerfile: Dockerfile
-    container_name: serviceB_v1
+    container_name: serviceb_v1
     restart: unless-stopped
     networks:
       - lumagate_net
 
-  serviceC_v1:
+  servicec_v1:
     build:
       context: ./services/v1/serviceC
       dockerfile: Dockerfile
-    container_name: serviceC_v1
+    container_name: servicec_v1
     restart: unless-stopped
     networks:
       - lumagate_net
 
-  serviceA_v2:
+  servicea_v2:
     build:
       context: ./services/v2/serviceA
       dockerfile: Dockerfile
-    container_name: serviceA_v2
+    container_name: servicea_v2
     restart: unless-stopped
     networks:
       - lumagate_net
 
-  serviceB_v2:
+  serviceb_v2:
     build:
       context: ./services/v2/serviceB
       dockerfile: Dockerfile
-    container_name: serviceB_v2
+    container_name: serviceb_v2
     restart: unless-stopped
     networks:
       - lumagate_net
 
-  serviceC_v2:
+  servicec_v2:
     build:
       context: ./services/v2/serviceC
       dockerfile: Dockerfile
-    container_name: serviceC_v2
+    container_name: servicec_v2
     restart: unless-stopped
     networks:
       - lumagate_net
@@ -79,12 +77,12 @@ services:
       - "80:80"
     depends_on:
       - lumagate-gateway
-      - serviceA_v1
-      - serviceB_v1
-      - serviceC_v1
-      - serviceA_v2
-      - serviceB_v2
-      - serviceC_v2
+      - servicea_v1
+      - serviceb_v1
+      - servicec_v1
+      - servicea_v2
+      - serviceb_v2
+      - servicec_v2
     restart: unless-stopped
     networks:
       - lumagate_net

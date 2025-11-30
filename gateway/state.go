@@ -67,14 +67,14 @@ func initState() {
 		ID:     "users",
 		Prefix: "/api/users",
 		V1: []Upstream{
-			{Name: "A", URL: "http://serviceA_v1:9001", Weight: 1},
-			{Name: "B", URL: "http://serviceB_v1:9002", Weight: 1},
-			{Name: "C", URL: "http://serviceC_v1:9003", Weight: 1},
+			{Name: "A", URL: "http://servicea_v1:9001", Weight: 1},
+			{Name: "B", URL: "http://serviceb_v1:9002", Weight: 1},
+			{Name: "C", URL: "http://servicec_v1:9003", Weight: 1},
 		},
 		V2: []Upstream{
-			{Name: "A", URL: "http://serviceA_v2:9011", Weight: 1},
-			{Name: "B", URL: "http://serviceB_v2:9012", Weight: 1},
-			{Name: "C", URL: "http://serviceC_v2:9013", Weight: 1},
+			{Name: "A", URL: "http://servicea_v2:9011", Weight: 1},
+			{Name: "B", URL: "http://serviceb_v2:9012", Weight: 1},
+			{Name: "C", URL: "http://servicec_v2:9013", Weight: 1},
 		},
 		LBEnabled: false,
 		Plugins: Plugins{
