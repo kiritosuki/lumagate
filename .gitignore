@@ -1,0 +1,78 @@
+# =========================
+# Go
+# =========================
+# Go build output
+/bin/
+/build/
+/dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go test cache
+*.test
+
+# Go temporary files
+*.out
+
+# Vendor (only if using go modules — normally vendor is ok to ignore)
+vendor/
+
+# =========================
+# Vue (frontend)
+# =========================
+web-admin/node_modules/
+web-admin/dist/
+web-admin/.env.local
+web-admin/.env.*.local
+
+# =========================
+# SQLite database
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / Editor / IDE
+# =========================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VSCode
+.vscode/
+.history/
+
+# JetBrains / Goland
+.idea/
+
+# Others
+*.swp
+*.swo
+*~
+
+# =========================
+# Docker
+# =========================
+/docker/volumes/
+/docker/tmp/
+
+# =========================
+# Env files (sensitive)
+# =========================
+.env
+.env.*
+
