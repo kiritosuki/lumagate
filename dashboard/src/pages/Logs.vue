@@ -13,15 +13,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { api } from '../api/admin'
+import { ElMessage } from 'element-plus'
 
 const tail = ref(100)
 const rows = ref<{ line: string }[]>([])
 
 async function load() {
-  const { data } = await api.tailLogs(tail.value)
-  rows.value = (data as string[]).map(s => ({ line: s }))
+  try {
+    const { data } = await api.tailLogs(tail.value)
+    rows.value = (data as string[]).map(s => ({ line: s }))
+  } catch (e) {
+    rows.value = []
+    ElMessage.error('无法获取日志，请检查网关是否运行')
+  }
 }
 
 load()
 </script>
-
